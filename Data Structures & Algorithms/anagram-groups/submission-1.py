@@ -1,10 +1,11 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        ans = defaultdict(list)
-        for word in strs:
-            alpha = [0] * 26
-            for char in word:
-                alpha[ord(char) - ord('a')] += 1
-            ans[tuple(alpha)].append(word)
-        return list(ans.values())
+        answer = {}
         
+        for string in strs:
+            sortedString = "".join(sorted(string))
+            if sortedString not in answer:
+                answer[sortedString] = []
+            answer[sortedString].append(string)
+        return list(answer.values())
+            
